@@ -1,8 +1,14 @@
-import React from "react";
+import React, { Component } from "react";
 import "./PointerReport.css";
 
-function PointerReport() {
-  return <div className="PointerReporter">Look Here Mama</div>;
+class PointerReport extends Component {
+  pointerPosition = () => {
+    console.log("Lookie here");
+  };
+
+  render() {
+    return <div className="PointerReport">Look Here Mama</div>;
+  }
 }
 
 export default PointerReport;

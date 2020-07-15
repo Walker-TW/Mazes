@@ -1,6 +1,5 @@
 import React from "react";
 import PointerReport from "./Components/PointerReport/PointerReport";
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
