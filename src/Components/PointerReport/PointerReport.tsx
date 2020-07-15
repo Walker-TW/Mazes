@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Button } from "@material-ui/core";
+
 import "./PointerReport.css";
 
 class PointerReport extends Component {
@@ -7,7 +9,18 @@ class PointerReport extends Component {
   };
 
   render() {
-    return <div className="PointerReport">Look Here Mama</div>;
+    return (
+      <div className="PointerReport">
+        Look Here Mama
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => this.pointerPosition()}
+        >
+          Primary
+        </Button>
+      </div>
+    );
   }
 }
 
