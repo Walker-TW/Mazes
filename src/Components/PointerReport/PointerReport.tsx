@@ -3,22 +3,35 @@ import { Button } from "@material-ui/core";
 
 import "./PointerReport.css";
 
-class PointerReport extends Component {
+class PointerReport extends Component<{}, { x: number; y: number }> {
+  constructor(props: any) {
+    super(props);
+    this.state = { x: 0, y: 0 };
+  }
+  _onMouseMove(e: any) {
+    this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
+  }
   pointerPosition = () => {
     console.log("Lookie here");
   };
 
   render() {
+    const { x, y } = this.state;
     return (
-      <div className="PointerReport">
+      <div className="PointerReport" onMouseMove={this._onMouseMove.bind(this)}>
         Look Here Mama
         <Button
           variant="contained"
           color="primary"
           onClick={() => this.pointerPosition()}
         >
-          Primary
+          Begin
         </Button>
+        <div>
+          <h1>
+            {x} {y}{" "}
+          </h1>
+        </div>
       </div>
     );
   }
