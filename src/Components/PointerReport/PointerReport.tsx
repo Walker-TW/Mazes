@@ -19,17 +19,16 @@ class PointerReport extends Component<{}, { x: number; y: number }> {
     const { x, y } = this.state;
     return (
       <div className="PointerReport" onMouseMove={this._onMouseMove.bind(this)}>
-        Look Here Mama
-        <Button
+        {/* <Button
           variant="contained"
           color="primary"
           onClick={() => this.pointerPosition()}
         >
           Begin
-        </Button>
+        </Button> */}
         <div>
           <h1>
-            {x} {y}{" "}
+            {x} {y}
           </h1>
         </div>
       </div>

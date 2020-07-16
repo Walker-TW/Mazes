@@ -1,12 +1,14 @@
 // enables intelligent code completion for Cypress commands
 // https://on.cypress.io/intelligent-code-completion
 /// <reference types="cypress" />
-// describe("My first test", () => {
-//   it("dont do much", function () {
-//     cy.visit("http://localhost:3000");
-//     cy.get(".h1").should("be.visible").and("have.text", "00");
-//   });
-// });
+
+describe("My first test", () => {
+  it("dont do much", function () {
+    cy.visit("http://localhost:3000");
+    cy.get(".PointerReport").should("be.visible").and("have.text", "0 0");
+  });
+});
+
 describe("My first test", () => {
   it("dont do much", function () {
     expect(true).to.equal(true);
