@@ -12,6 +12,12 @@ describe("My first test", () => {
     expect(true).to.equal(true);
   });
 });
+
+describe("Checking that you can visit the site", () => {
+  it("goes to the website", function () {
+    cy.visit("http://localhost:3000");
+  });
+});
 // more examples
 //
 // https://github.com/cypress-io/cypress-example-todomvc
