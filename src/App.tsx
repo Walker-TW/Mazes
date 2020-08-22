@@ -5,7 +5,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      Maze In The Dark
+      Hey Momma
       <PointerReport />
     </div>
   );
