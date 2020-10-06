@@ -7,3 +7,25 @@ UNDER CONSTRUCTION!!! Now with Typescript
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
+## GoCD Instructions 
+
+Navigate to required directory (server first)
+- ./bin/go-server console (started in the foreground)
+- ./bin/go-server start (started as a daemon in the background)
+- ./bin/go-server stop
+- ./bin/go-server restart
+
+Navigate to required directory (then agent)
+- ./bin/go-agent start (started as a daemon in the background)
+- ./bin/go-agent console (started in the foreground)
+- ./bin/go-agent stop
+- ./bin/go-agent restart
+
+Runs on  'http://localhost:8153' 
+
+Pipelines need to be configured
+- Run specific build scripts
+- Then run testing
+- check on normal Heorku builds to see the commands
+
