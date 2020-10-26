@@ -9,6 +9,7 @@ class PointerReport extends Component<{}, { x: number; y: number }> {
     this.state = { x: 0, y: 0 };
   }
   _onMouseMove(e: any) {
+    console.log("Im checking where the pointer is")
     this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
   }
   pointerPosition = () => {
