@@ -7,3 +7,14 @@ UNDER CONSTRUCTION!!! Now with Typescript
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
+
+## Things To Do
+- Testing Framework Setup
+    - Snapshots
+    - React Testing Library?
+    - How to test Pixi?
+- Trial Grid creation
+    - npm pixi-grid?
+    - 
+- Routing needed?
+    - Nope, doesnt add anything to the app 
