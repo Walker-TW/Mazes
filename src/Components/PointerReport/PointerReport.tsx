@@ -11,9 +11,7 @@ class PointerReport extends Component<{}, { x: number; y: number }> {
   _onMouseMove(e: any) {
     this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
   }
-  pointerPosition = () => {
-    console.log("Lookie here");
-  };
+
 
   render() {
     const { x, y } = this.state;
@@ -25,7 +23,7 @@ class PointerReport extends Component<{}, { x: number; y: number }> {
           onClick={() => this.pointerPosition()} 
         >
           Begin 
-        </Button> */} 
+        </Button> */}
         <div> 
           <h1> 
             {x} {y}
