@@ -1,3 +1,16 @@
-.PointerReport {
-  background-color: aquamarine;
+/* .PointerReport {
+
+} */
+
+.play-field{
+  background-color: #17FFEE;
+  height: 66vh;
+  width: 66vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.position-readout{
+  align-items: center;
 }
