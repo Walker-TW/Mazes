@@ -1,12 +1,16 @@
 import React from "react";
 import PointerReport from "./Components/PointerReport/PointerReport";
+import ReadOut from './Components/Readout/ReadOut'
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      Hey Momma
-      <PointerReport />
+      <div className="title">
+        Maze In The Dark
+      </div>
+      <PointerReport/>
+      <ReadOut/>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "@material-ui/core";
+import ReadOut from '../Readout/ReadOut'
 
 import "./PointerReport.css";
 
@@ -17,20 +18,20 @@ class PointerReport extends Component<{}, { x: number; y: number }> {
   };
 
   render() {
-    const { x, y } = this.state;
     return (
-      <div className="PointerReport" onMouseMove={this._onMouseMove.bind(this)}>
-        {/* <Button
+      <div className="PointerReport">
+        <div className="play-field" onMouseMove={this._onMouseMove.bind(this)}>
+        <Button
+          className="begin-button"
           variant="contained"
           color="primary"
           onClick={() => this.pointerPosition()}
         >
           Begin
-        </Button> */}
-        <div>
-          <h1>
-            {x} {y}
-          </h1>
+        </Button>
+        </div>
+        <div className="postion-readout">
+        <ReadOut props={this.state}/>
         </div>
       </div>
     );
