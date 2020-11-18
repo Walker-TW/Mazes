@@ -35,7 +35,6 @@ class PointerReport extends Component<{}, { x: number; y: number; play: boolean 
     })
 
     this.silenceGap(this.state.x)
-    console.log("now silence finished")
 
     this.state.play ? this.audio.play() : this.audio.pause();
     this.audio.loop = true;
