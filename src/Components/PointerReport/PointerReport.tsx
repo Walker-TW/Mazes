@@ -10,6 +10,10 @@ class PointerReport extends Component<{}, { x: number; y: number; play: boolean 
     this.state = { x: 0, y: 0, play: true };
   }
 
+  audio = new Audio("/Wall.m4a")
+
+  audioGap = new Audio("/1-second-of-silence.mp3")
+
   _onMouseMove(e: any) {
     console.log("Im checking where the pointer is")
     this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
@@ -18,13 +22,20 @@ class PointerReport extends Component<{}, { x: number; y: number; play: boolean 
     console.log("Lookie here");
   };
 
-  audio = new Audio("/Wall.m4a")
-
+  silenceGap(x: number) {
+    for (let i = 0; i < x; i++) {
+      this.audioGap.play()
+      console.log("audioplays")
+    }
+  }
 
   togglePlay() {
     this.setState({
       play: !this.state.play
     })
+
+    this.silenceGap(this.state.x)
+    console.log("now silence finished")
 
     this.state.play ? this.audio.play() : this.audio.pause();
     this.audio.loop = true;

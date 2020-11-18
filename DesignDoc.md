@@ -26,5 +26,3 @@ Needs;
 * Starting position
 
   - Box to click then generates box from there/
-
-* Alice suggest Canvas or SVG
