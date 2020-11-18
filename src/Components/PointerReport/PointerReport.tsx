@@ -9,6 +9,7 @@ class PointerReport extends Component<{}, { x: number; y: number }> {
     super(props);
     this.state = { x: 0, y: 0 };
   }
+
   _onMouseMove(e: any) {
     console.log("Im checking where the pointer is")
     this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
@@ -18,6 +19,8 @@ class PointerReport extends Component<{}, { x: number; y: number }> {
   };
 
   render() {
+    var audio = new Audio("/Wall.m4a")
+
     return (
       <div className="PointerReport">
         <div className="play-field" onMouseMove={this._onMouseMove.bind(this)}>
@@ -25,7 +28,7 @@ class PointerReport extends Component<{}, { x: number; y: number }> {
           className="begin-button"
           variant="contained"
           color="primary"
-          onClick={() => this.pointerPosition()}
+          onClick={() => audio.play()}
         >
           Begin
         </Button>
