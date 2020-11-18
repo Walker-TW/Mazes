@@ -4,10 +4,10 @@ import ReadOut from '../Readout/ReadOut'
 
 import "./PointerReport.css";
 
-class PointerReport extends Component<{}, { x: number; y: number }> {
+class PointerReport extends Component<{}, { x: number; y: number; play: boolean }> {
   constructor(props: any) {
     super(props);
-    this.state = { x: 0, y: 0 };
+    this.state = { x: 0, y: 0, play: true };
   }
 
   _onMouseMove(e: any) {
@@ -18,9 +18,19 @@ class PointerReport extends Component<{}, { x: number; y: number }> {
     console.log("Lookie here");
   };
 
-  render() {
-    var audio = new Audio("/Wall.m4a")
+  audio = new Audio("/Wall.m4a")
 
+
+  togglePlay() {
+    this.setState({
+      play: !this.state.play
+    })
+
+    this.state.play ? this.audio.play() : this.audio.pause();
+    this.audio.loop = true;
+  }
+
+  render() {
     return (
       <div className="PointerReport">
         <div className="play-field" onMouseMove={this._onMouseMove.bind(this)}>
@@ -28,7 +38,7 @@ class PointerReport extends Component<{}, { x: number; y: number }> {
           className="begin-button"
           variant="contained"
           color="primary"
-          onClick={() => audio.play()}
+          onClick={() => this.togglePlay()}
         >
           Begin
         </Button>
