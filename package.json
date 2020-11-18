@@ -14,8 +14,7 @@
     "fontsource-roboto": "^2.1.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "^4.0.0",
-    "typescript": "~3.7.2"
+    "react-scripts": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,6 +40,7 @@
   "devDependencies": {
     "@bahmutov/add-typescript-to-cypress": "^2.1.2",
     "cypress": "^4.10.0",
+    "typescript": "^3.7.5",
     "webpack": "^4.43.0"
   }
 }

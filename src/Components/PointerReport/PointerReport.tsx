@@ -4,11 +4,12 @@ import ReadOut from '../Readout/ReadOut'
 
 import "./PointerReport.css";
 
-class PointerReport extends Component<{}, { x: number; y: number }> {
+class PointerReport extends Component<{}, { x: number; y: number; play: boolean }> {
   constructor(props: any) {
     super(props);
-    this.state = { x: 0, y: 0 };
+    this.state = { x: 0, y: 0, play: true };
   }
+
   _onMouseMove(e: any) {
     console.log("Im checking where the pointer is")
     this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
@@ -16,6 +17,18 @@ class PointerReport extends Component<{}, { x: number; y: number }> {
   pointerPosition = () => {
     console.log("Lookie here");
   };
+
+  audio = new Audio("/Wall.m4a")
+
+
+  togglePlay() {
+    this.setState({
+      play: !this.state.play
+    })
+
+    this.state.play ? this.audio.play() : this.audio.pause();
+    this.audio.loop = true;
+  }
 
   render() {
     return (
@@ -25,7 +38,7 @@ class PointerReport extends Component<{}, { x: number; y: number }> {
           className="begin-button"
           variant="contained"
           color="primary"
-          onClick={() => this.pointerPosition()}
+          onClick={() => this.togglePlay()}
         >
           Begin
         </Button>
