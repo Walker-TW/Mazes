@@ -4,10 +4,16 @@ import ReadOut from '../Readout/ReadOut'
 
 import "./PointerReport.css";
 
-class PointerReport extends Component<{}, { x: number; y: number; play: boolean }> {
+class PointerReport extends Component<{}, { x: number; y: number; play: boolean, nowPlaying: boolean, finalNode: any }> {
   constructor(props: any) {
     super(props);
-    this.state = { x: 0, y: 0, play: true };
+    this.state = { 
+      x: 0,
+      y: 0,
+      play: true,
+      nowPlaying: false,
+      finalNode: null,
+    };
   }
 
   audio = new Audio("/Wall.m4a")
@@ -29,6 +35,15 @@ class PointerReport extends Component<{}, { x: number; y: number; play: boolean 
     }
   }
 
+  toggleStart() {
+    this.setState({
+      nowPlaying: !this.state.nowPlaying
+    })
+    console.log(this.state.nowPlaying)
+    this.togglePlay()
+  }
+
+
   togglePlay() {
     this.setState({
       play: !this.state.play
@@ -48,7 +63,7 @@ class PointerReport extends Component<{}, { x: number; y: number; play: boolean 
           className="begin-button"
           variant="contained"
           color="primary"
-          onClick={() => this.togglePlay()}
+          onClick={() => this.toggleStart()}
         >
           Begin
         </Button>
