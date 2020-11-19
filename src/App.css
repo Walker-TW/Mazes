@@ -14,6 +14,7 @@
 
 .title{
   text-align: center;
+  display: flex;
   color: #CC17FF;
   font-size: 50px;
   font-family: 'Monoton', cursive;

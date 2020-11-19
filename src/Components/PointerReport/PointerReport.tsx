@@ -12,7 +12,7 @@ class PointerReport extends Component<{}, { x: number; y: number; play: boolean 
 
   audio = new Audio("/Wall.m4a")
 
-  audioGap = new Audio("/1-second-of-silence.mp3")
+  audioGap = new Audio("/250.ms.mp3")
 
   _onMouseMove(e: any) {
     console.log("Im checking where the pointer is")
