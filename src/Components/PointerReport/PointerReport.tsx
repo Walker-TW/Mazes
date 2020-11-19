@@ -4,14 +4,14 @@ import ReadOut from '../Readout/ReadOut'
 
 import "./PointerReport.css";
 
-class PointerReport extends Component<{}, { x: number; y: number; play: boolean, nowPlaying: boolean, finalNode: any }> {
+class PointerReport extends Component<{}, { x: number; y: number; warningPlaying: boolean, playingGame: boolean, finalNode: any }> {
   constructor(props: any) {
     super(props);
     this.state = { 
       x: 0,
       y: 0,
-      play: true,
-      nowPlaying: false,
+      warningPlaying: true,
+      playingGame: false,
       finalNode: null,
     };
   }
@@ -37,21 +37,22 @@ class PointerReport extends Component<{}, { x: number; y: number; play: boolean,
 
   toggleStart() {
     this.setState({
-      nowPlaying: !this.state.nowPlaying
+      playingGame: !this.state.playingGame
     })
-    console.log(this.state.nowPlaying)
+    console.log(this.state.playingGame)
     this.togglePlay()
   }
 
 
+
   togglePlay() {
     this.setState({
-      play: !this.state.play
+      warningPlaying: !this.state.warningPlaying
     })
 
     this.silenceGap(this.state.x)
 
-    this.state.play ? this.audio.play() : this.audio.pause();
+    this.state.warningPlaying ? this.audio.play() : this.audio.pause();
     this.audio.loop = true;
   }
 
@@ -65,7 +66,7 @@ class PointerReport extends Component<{}, { x: number; y: number; play: boolean,
           color="primary"
           onClick={() => this.toggleStart()}
         >
-          Begin
+          Start Game
         </Button>
         </div>
         <div className="postion-readout">
