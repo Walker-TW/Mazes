@@ -62,3 +62,14 @@ class PointerReport extends Component<{}, { x: number; y: number; play: boolean 
 }
 
 export default PointerReport;
+
+
+// Game start function 
+//  - which then hides button AND turns game.state => on
+// can then do conditional rendering? AND use useContext to always grab game state?
+// 
+// - Need to show exit place (maybe in first iteration have goal displayed at the bottom?)
+// 
+// - can also do highscore based off time to exit very easily.....
+// - - just do ratio creation? - maybe even use the toasts 
+// 
