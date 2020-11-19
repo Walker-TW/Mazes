@@ -18,14 +18,14 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
 
   audio = new Audio("/Wall.m4a")
 
+  failure = new Audio("/Failure.mp3")
+
   audioGap = new Audio("/250.ms.mp3")
 
   _onMouseMove(e: any) {
-    console.log("Im checking where the pointer is")
     this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
   }
   pointerPosition = () => {
-    console.log("Lookie here");
   };
 
   silenceGap(x: number) {
@@ -39,10 +39,10 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
     this.setState({
       playingGame: !this.state.playingGame
     })
+    // This should also make the button 
     console.log(this.state.playingGame)
     this.togglePlay()
   }
-
 
 
   togglePlay() {
@@ -56,10 +56,18 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
     this.audio.loop = true;
   }
 
+  boundryCheck() {
+    if (this.state.playingGame === true ) {this.failure.play()}
+    return undefined
+    // should make alarm sound if this.state.playingGame = true AND goes into the outskirts of the app ?
+    // looks like this may have to be a component that wraps the pointer report and passes everything through?
+    // then mouse in event? or maybe a mouseout event? - that seems better
+  }
+
   render() {
     return (
       <div className="PointerReport">
-        <div className="play-field" onMouseMove={this._onMouseMove.bind(this)}>
+        <div className="play-field" onMouseMove={this._onMouseMove.bind(this)}  onMouseLeave={this.boundryCheck()}>
         <Button
           className="begin-button"
           variant="contained"
