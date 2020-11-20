@@ -108,7 +108,7 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
           color="primary"
           onClick={() => this.toggleStart()}
         >
-          Start Game
+          Start
         </Button>
         </div>
         <div className="postion-readout">
