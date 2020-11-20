@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
 .App {
   text-align: center;
   background-color: #6917d0;
@@ -12,9 +14,10 @@
 
 .title{
   text-align: center;
+  display: flex;
   color: #CC17FF;
   font-size: 50px;
-
+  font-family: 'Monoton', cursive;
 }
 
 /* .App-logo {

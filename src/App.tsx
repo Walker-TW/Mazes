@@ -9,6 +9,7 @@ function App() {
       <div className="title">
         Maze In The Dark
       </div>
+      &nbsp;
       <PointerReport/>
       <ReadOut/>
     </div>

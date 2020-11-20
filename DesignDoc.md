@@ -5,7 +5,7 @@ Needs;
 - Cyprus Testing?
   - Allows mocking of moue movement
 
-* Ability to sense mouse cursor
+* Ability to sense mouse cursor X
 
   - Chop the Area into a grid?
   - Which is auto fitted
@@ -26,5 +26,3 @@ Needs;
 * Starting position
 
   - Box to click then generates box from there/
-
-* Alice suggest Canvas or SVG
