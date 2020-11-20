@@ -21,6 +21,20 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
 
   // [mouseLeft, ref] = useMouseLeave()
 
+  map = {
+    0 : 3,
+    1 : 1.5,
+    2 : 1.5,
+    3 : 1,
+    4 : 1,
+    5 : 0.9,
+    6 : 0.8,
+    7 : 0.7,
+    8 : 0.6,
+    9 : 0.5,
+    10 : 0.4
+  }
+
   audio = new Audio("/Wall.m4a")
 
   failure = new Audio("/Failure.mp3")
@@ -43,7 +57,7 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
   _onMouseMove(e: any) {
     this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
     this.victoryCheck()
-    
+    this.loopMusic()
   }
 
 
@@ -67,13 +81,29 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
     this.setState({
       warningPlaying: !this.state.warningPlaying
     })
-
     this.setState({victoryCoordinate: this.createRandomNumbers()})
+    // this.silenceGap(this.state.x)
+  }
 
-    this.silenceGap(this.state.x)
+  loopMusic() {
+    let playBackRate = this.determinePlayBackSpeed()
+    this.audio.playbackRate = playBackRate
+    this.state.playingGame ? this.audio.play() : this.audio.pause();
+  }
 
-    this.state.warningPlaying ? this.audio.play() : this.audio.pause();
-    this.audio.loop = true;
+  getDistance() {
+    let x = Math.abs(this.state.victoryCoordinate.x - this.state.x)
+    let y = Math.abs(this.state.victoryCoordinate.y - this.state.y)
+    if (isNaN(x) || isNaN(y)) return 4
+    return Math.floor((x+y)/100)
+  }
+
+  determinePlayBackSpeed() {
+    let distance: number = this.getDistance()
+    console.log(distance)
+    // @ts-ignore
+    let answer = this.map[distance]
+    return answer
   }
 
   createRandomNumbers() {
@@ -81,6 +111,8 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
      let y: number = Math.floor(Math.random() * 630) + 100
      return { x , y } 
   }
+
+
 
   boundryCheck() {
     // if (this.state.playingGame === true ) {this.failure.play()}
