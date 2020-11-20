@@ -35,7 +35,6 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
       if ((this.state.x === this.state.victoryCoordinate.x) && (this.state.y === this.state.victoryCoordinate.y)) 
       {
         this.victory.play()
-        console.log(this.state.playingGame)
         this.setState({playingGame : false})
       }
     }
@@ -51,22 +50,15 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
   silenceGap(x: number) {
     for (let i = 0; i < x; i++) {
       this.audioGap.play()
-      console.log("audioplays")
     }
   }
 
-  checkState() {
-    console.log("victory", this.state.victoryCoordinate.x, this.state.victoryCoordinate.y)
-    console.log("state", this.state.x, this.state.y)
-    console.log(this.state.x === this.state.victoryCoordinate.x && this.state.y === this.state.victoryCoordinate.y )
-  }
 
   toggleStart() {
     this.setState({
       playingGame: !this.state.playingGame
     })
     // This should also make the button disapear? 
-    console.log(this.state.playingGame)
     this.togglePlay()
   }
 
@@ -128,7 +120,7 @@ export default PointerReport;
 // Game start function 
 //  - which then hides button AND turns game.state => on
 // can then do conditional rendering? AND use useContext to always grab game state?
-// 
+// - can be done but need to pass a load of props which is not what this is about
 // - Need to show exit place (maybe in first iteration have goal displayed at the bottom?)
 // 
 // - can also do highscore based off time to exit very easily.....
