@@ -6,17 +6,27 @@ import Target from '../Target/Target';
 
 import "./PointerReport.css";
 
-class PointerReport extends Component<{}, { x: number; y: number; warningPlaying: boolean, playingGame: boolean, finalNode: any, victoryCoordinate: any }> {
+class PointerReport extends Component<{}, { x: number, y: number, dimensions: any, warningPlaying: boolean, playingGame: boolean, finalNode: any, victoryCoordinate: any, victoryZone: any }> {
+  private playField: any
   constructor(props: any) {
     super(props);
+    this.playField = React.createRef();
     this.state = { 
       x: 0,
       y: 0,
+      dimensions : { height: 0, width: 0},
       warningPlaying: true,
       playingGame: false,
       finalNode: null,
-      victoryCoordinate: { x: '?', y: '?' }
+      victoryCoordinate: { x: '?', y: '?' },
+      victoryZone: []
     };
+  }
+
+  componentDidMount() {
+    const height = this.playField.current.offsetHeight
+    const width = this.playField.current.offsetWidth
+    if (width != null && height != null) { this.setState({ dimensions: {height: height, width: width }})}
   }
 
   // [mouseLeft, ref] = useMouseLeave()
@@ -56,7 +66,8 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
 
   _onMouseMove(e: any) {
     this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
-    this.victoryCheck()
+    this.checkVictoryZone()
+    // this.victoryCheck()
     this.loopMusic()
   }
 
@@ -67,6 +78,47 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
     }
   }
 
+  checkVictoryZone() {
+    let victoryZone = this.state.victoryZone
+    if (this.state.playingGame) {
+      for (var i = 0; i < victoryZone.length; i++) {
+        console.log(victoryZone[i])
+
+      if ((this.state.x === victoryZone[i][0]) && (this.state.y === victoryZone[i][1])) 
+      {
+        this.victory.play()
+        this.setState({playingGame : false})
+        }
+      }
+    }
+  }
+
+  generateVictoryZone() {
+    const x: number = this.state.victoryCoordinate.x
+    const y: number = this.state.victoryCoordinate.y
+
+    let answerArray = [ 
+      [x , y],
+      [x , y-1],
+      [x , y + 1],
+      [x + 1, y],
+      [x + 1, y-1],
+      [x + 1, y + 1],
+      [x - 1, y],
+      [x - 1, y-1],
+      [x - 1, y + 1],
+  ]
+
+    return answerArray
+    // the easier wasy to do this is simply do a case check of the citory area but we checking the array can happen
+    // not the best implementation of it 
+  }
+  
+  setVictoryZone() {
+    let victoryArray = this.generateVictoryZone()
+    this.setState({ victoryZone: victoryArray})
+    console.log("we have set thye victory array")
+  }
 
   toggleStart() {
     this.setState({
@@ -74,6 +126,9 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
     })
     // This should also make the button disapear? 
     this.togglePlay()
+    this.loopMusic()
+    // done to allow state to update
+    setTimeout(() => this.setVictoryZone(), 1000 )
   }
 
 
@@ -82,6 +137,7 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
       warningPlaying: !this.state.warningPlaying
     })
     this.setState({victoryCoordinate: this.createRandomNumbers()})
+    console.log("weset the numbverljhvgjlv")
     // this.silenceGap(this.state.x)
   }
 
@@ -107,8 +163,8 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
   }
 
   createRandomNumbers() {
-     let x: number = Math.floor(Math.random() * 630) + 100
-     let y: number = Math.floor(Math.random() * 630) + 100
+     let x: number = Math.floor(Math.random() * this.state.dimensions.height) + 1
+     let y: number = Math.floor(Math.random() * this.state.dimensions.width) + 1
      return { x , y } 
   }
 
@@ -125,7 +181,11 @@ class PointerReport extends Component<{}, { x: number; y: number; warningPlaying
   render() {
     return (
       <div className="PointerReport">
-        <div className="play-field" onMouseMove={this._onMouseMove.bind(this)}  onMouseOut={this.boundryCheck()}>
+        <div className="play-field" 
+        ref={this.playField}
+        onMouseMove={this._onMouseMove.bind(this)}  
+        onMouseOut={this.boundryCheck()}
+        >
         <Button
           className="begin-button"
           variant="contained"
