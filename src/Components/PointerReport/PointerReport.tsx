@@ -5,8 +5,19 @@ import Target from '../Target/Target';
 // import useMouseLeave from 'use-mouse-leave';
 
 import "./PointerReport.css";
+import ScoreBoard from "../Score/ScoreBoard";
 
-class PointerReport extends Component<{}, { x: number, y: number, dimensions: any, warningPlaying: boolean, playingGame: boolean, finalNode: any, victoryCoordinate: any, victoryZone: any }> {
+class PointerReport extends Component<{}, { 
+    x: number,
+    y: number,
+    dimensions: any,
+    warningPlaying: boolean,
+    playingGame: boolean,
+    finalNode: any,
+    victoryCoordinate: any,
+    victoryZone: any,
+    playerScore: number
+  }> {
   private playField: any
   constructor(props: any) {
     super(props);
@@ -19,7 +30,8 @@ class PointerReport extends Component<{}, { x: number, y: number, dimensions: an
       playingGame: false,
       finalNode: null,
       victoryCoordinate: { x: '?', y: '?' },
-      victoryZone: []
+      victoryZone: [],
+      playerScore: 0
     };
   }
 
@@ -82,8 +94,6 @@ class PointerReport extends Component<{}, { x: number, y: number, dimensions: an
     let victoryZone = this.state.victoryZone
     if (this.state.playingGame) {
       for (var i = 0; i < victoryZone.length; i++) {
-        console.log(victoryZone[i])
-
       if ((this.state.x === victoryZone[i][0]) && (this.state.y === victoryZone[i][1])) 
       {
         this.victory.play()
@@ -137,7 +147,6 @@ class PointerReport extends Component<{}, { x: number, y: number, dimensions: an
       warningPlaying: !this.state.warningPlaying
     })
     this.setState({victoryCoordinate: this.createRandomNumbers()})
-    console.log("weset the numbverljhvgjlv")
     // this.silenceGap(this.state.x)
   }
 
@@ -156,7 +165,6 @@ class PointerReport extends Component<{}, { x: number, y: number, dimensions: an
 
   determinePlayBackSpeed() {
     let distance: number = this.getDistance()
-    console.log(distance)
     // @ts-ignore
     let answer = this.map[distance]
     return answer
@@ -181,6 +189,7 @@ class PointerReport extends Component<{}, { x: number, y: number, dimensions: an
   render() {
     return (
       <div className="PointerReport">
+        <ScoreBoard props={this.state.playerScore}/>
         <div className="play-field" 
         ref={this.playField}
         onMouseMove={this._onMouseMove.bind(this)}  
