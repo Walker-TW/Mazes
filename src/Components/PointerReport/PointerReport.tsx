@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "@material-ui/core";
 import ReadOut from '../Readout/ReadOut';
+import Timer from '../Timer/Timer'
 import Target from '../Target/Target';
 // import useMouseLeave from 'use-mouse-leave';
 
@@ -16,7 +17,8 @@ class PointerReport extends Component<{}, {
     finalNode: any,
     victoryCoordinate: any,
     victoryZone: any,
-    playerScore: number
+    playerScore: number,
+    timeToGo: number
   }> {
   private playField: any
   constructor(props: any) {
@@ -31,7 +33,8 @@ class PointerReport extends Component<{}, {
       finalNode: null,
       victoryCoordinate: { x: '?', y: '?' },
       victoryZone: [],
-      playerScore: 0
+      playerScore: 0,
+      timeToGo: 0
     };
   }
 
@@ -190,6 +193,7 @@ class PointerReport extends Component<{}, {
     return (
       <div className="PointerReport">
         <ScoreBoard props={this.state.playerScore}/>
+        <Timer props={this.state.timeToGo} />
         <div className="play-field" 
         ref={this.playField}
         onMouseMove={this._onMouseMove.bind(this)}  
