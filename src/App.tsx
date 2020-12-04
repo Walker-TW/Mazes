@@ -1,6 +1,5 @@
 import React from "react";
 import PointerReport from "./Components/PointerReport/PointerReport";
-import ReadOut from './Components/Readout/ReadOut'
 import "./App.css";
 
 function App() {
@@ -11,7 +10,6 @@ function App() {
       </div>
       &nbsp;
       <PointerReport/>
-      <ReadOut/>
     </div>
   );
 }

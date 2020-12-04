@@ -16,6 +16,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^4.0.0",
+    "react-sizeme": "^2.6.12",
     "use-mouse-leave": "^1.0.0"
   },
   "scripts": {

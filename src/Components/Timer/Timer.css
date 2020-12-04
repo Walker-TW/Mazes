@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.timer{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #c8b029;
+    font-family: 'VT323', monospace;
+    z-index: 1;
+}

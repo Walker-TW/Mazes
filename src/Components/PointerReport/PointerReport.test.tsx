@@ -7,3 +7,9 @@ test("renders componenet", () => {
   const linkElement = getByText(/0,0/i);
   expect(linkElement).toBeInTheDocument();
 });
+
+xdescribe('#createRandomNumbers()',() => {
+  it('will return a randomised number between the boundries of the 100-630', () => {
+    expect(createRandomNumbers()).toReturn()
+  })
+})
